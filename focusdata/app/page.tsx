@@ -1,184 +1,169 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Database, Eye, TrendingUp, Shield, Zap } from "lucide-react";
-import Image from "next/image";
-import { ThemeToggle } from "@/components/theme-toggle";
+"use client"
 
-export default function Home() {
+import Image from "next/image";
+import { useState } from "react";
+
+export default function ComingSoon() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setMessage("");
+    setSuccess(false);
+    setSuccess(true);
+    setMessage("Merci ! Vous êtes bien inscrit(e).");
+    setEmail("");
+  }
+
+  // Palette violet/blanc
+  const violet = "#3c0366";
+  const blanc = "#FFFFFF";
+  const texteSecondaire = "#E0E0E0";
+  const focusGlow = "0 0 40px 10px #c27aff";
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+    <div
+      className="min-h-screen w-full flex flex-col"
+      style={{
+        fontFamily: "'Inter', sans-serif",
+        background: `conic-gradient(from 225deg at 60% 60%, #3c0366 0deg 120deg, #FFFFFF 120deg 360deg)`
+      }}
+    >
       {/* Header */}
-      <header className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Image 
-                src="/focus_logo.png" 
-                alt="Focus Logo" 
-                width={20} 
-                height={20}
-                className="w-5 h-5"
-              />
-            </div>
-            <span className="text-xl font-bold text-foreground">F O C U S</span>
+      <header
+        className="flex justify-between items-center w-full"
+        style={{ padding: "2rem 4rem" }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 flex items-center justify-center">
+            <Image src="/focus_logo.png" alt="Logo Focus" width={32} height={32} />
           </div>
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            <Badge variant="secondary" className="animate-pulse">
-              Coming Soon
-            </Badge>
-          </div>
+          <span
+            style={{
+              color: blanc,
+              fontWeight: 500,
+              fontSize: "1.5rem",
+              letterSpacing: "0.02em",
+            }}
+          >
+            F O C U S
+          </span>
         </div>
+        <nav>
+          <a
+            href="#"
+            style={{
+              color: blanc,
+              fontSize: "1rem",
+              textDecoration: "none",
+              fontWeight: 400,
+            }}
+          >
+            Home
+          </a>
+        </nav>
       </header>
 
-      {/* Hero Section */}
-      <main className="container mx-auto px-4 py-16">
-        <div className="text-center space-y-8 max-w-4xl mx-auto">
-          <div className="space-y-4">
-            <Badge variant="outline" className="text-sm">
-              Data Platform focused on Observability
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                F O C U S
-              </span>
-              <br />
-              <span className="text-foreground">is coming soon</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Be data omniscient by monitoring, analyzing and optimizing your data in real-time.
-            </p>
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-start justify-center px-8" style={{ padding: "4rem 4rem 0 4rem" }}>
+        <div style={{ maxWidth: 600 }}>
+          <div
+            style={{
+              color: texteSecondaire,
+              fontSize: "1.2rem",
+              marginBottom: "1rem",
+              fontWeight: 400,
+            }}
+          >
+            It's only a matter of time...
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="text-lg px-8 py-6">
-              Get notified at launch
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-              Learn more
-            </Button>
-          </div>
-        </div>
-
-        {/* Features Grid */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Eye className="w-6 h-6 text-primary" />
-              </div>
-              <CardTitle>Real-time observability</CardTitle>
-              <CardDescription>
-                Monitor your data continuously with customizable metrics and alerts
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-primary" />
-              </div>
-              <CardTitle>Advanced analytics</CardTitle>
-              <CardDescription>
-                Analyze trends and patterns in your data with powerful tools
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Database className="w-6 h-6 text-primary" />
-              </div>
-              <CardTitle>Centralized management</CardTitle>
-              <CardDescription>
-                Centralize and organize all your data sources in one place
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-primary" />
-              </div>
-              <CardTitle>Enhanced security</CardTitle>
-              <CardDescription>
-                Protect your sensitive data with enterprise-level security mechanisms
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <CardTitle>Optimal performance</CardTitle>
-              <CardDescription>
-                Ultra-fast data processing with high-performance architecture
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Eye className="w-6 h-6 text-primary" />
-              </div>
-              <CardTitle>Intuitive interface</CardTitle>
-              <CardDescription>
-                A modern and intuitive user experience for all skill levels
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-24 text-center">
-          <Card className="border-0 bg-gradient-to-r from-primary/5 to-secondary/5 shadow-xl">
-            <CardContent className="pt-12 pb-12">
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to revolutionize your data observability?
-              </h2>
-              <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-                Join the waitlist and be among the first to discover Focus
-              </p>
-              <Button size="lg" className="text-lg px-8 py-6">
-                Join the waitlist
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </CardContent>
-          </Card>
+          <h1
+            style={{
+              color: blanc,
+              fontSize: "6rem",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              marginBottom: "2rem",
+              letterSpacing: "-0.04em",
+              textShadow: `0 2px 32px ${blanc}, 0 0 8px ${violet}`,
+              filter: "brightness(1.1)",
+            }}
+          >
+            Coming<br />Soon
+          </h1>
+          <p
+            style={{
+              color: texteSecondaire,
+              fontSize: "1rem",
+              marginBottom: "3rem",
+              maxWidth: 450,
+              fontWeight: 400,
+            }}
+          >
+            Join our newsletter to be the first to know when FOCUS launches and receive updates on the latest in data.
+          </p>
+          <form
+            onSubmit={handleSubmit}
+            className="flex items-center gap-2"
+            style={{
+              background: "rgba(255,255,255,0.15)",
+              border: `1px solid ${violet}55`,
+              borderRadius: 50,
+              padding: "0.5rem",
+              maxWidth: 450,
+              boxShadow: focusGlow,
+            }}
+          >
+            <input
+              type="email"
+              required
+              placeholder="Email *"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: blanc,
+                padding: "0.5rem 1rem",
+                flex: 1,
+                outline: "none",
+                fontSize: "1rem",
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                background: violet,
+                color: blanc,
+                border: "none",
+                borderRadius: 50,
+                padding: "0.75rem 1.5rem",
+                fontWeight: 500,
+                fontSize: "1rem",
+                cursor: "pointer",
+                boxShadow: `0 0 0 2px ${blanc}55`,
+                transition: "background 0.2s, color 0.2s",
+              }}
+            >
+              Sign Up
+            </button>
+          </form>
+          {message && (
+            <div
+              style={{
+                color: success ? "#22c55e" : "#ef4444",
+                marginTop: "1rem",
+                fontSize: "0.95rem",
+                textAlign: "left",
+              }}
+            >
+              {message}
+            </div>
+          )}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="container mx-auto px-4 py-12 border-t">
-        <div className="text-center space-y-4">
-          <div className="flex items-center justify-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
-              <Image 
-                src="/focus_logo.png" 
-                alt="Focus Logo" 
-                width={16} 
-                height={16}
-                className="w-4 h-4"
-              />
-            </div>
-            <span className="text-lg font-semibold">F O C U S</span>
-          </div>
-          <p className="text-muted-foreground">
-            The next-generation data observability platform
-          </p>
-          <div className="flex justify-center space-x-6 text-sm text-muted-foreground">
-            <span>© 2025 Focus. All rights reserved.</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
