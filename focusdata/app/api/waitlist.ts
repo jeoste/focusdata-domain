@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: OWNER_EMAIL,
+        from: "onboarding@resend.dev",  // Use Resend's test email during development
         to: OWNER_EMAIL,
         subject: "Nouvelle inscription à la waitlist Focus",
         html: `<p>Nouvelle inscription à la waitlist : <b>${email}</b></p>`

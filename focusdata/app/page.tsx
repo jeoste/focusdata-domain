@@ -8,13 +8,39 @@ export default function ComingSoon() {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const gradientStyle = {
+    background: "radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(87, 0, 107, 1) 53%, rgba(132, 0, 184, 1) 80%, rgba(90, 0, 110, 1) 98%)",
+    minHeight: "100vh"
+  };
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setMessage("");
     setSuccess(false);
-    setSuccess(true);
-    setMessage("Merci ! Vous êtes bien inscrit(e).");
-    setEmail("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        setMessage("Merci ! Vous êtes bien inscrit(e).");
+        setEmail("");
+      } else {
+        setSuccess(false);
+        setMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
+      }
+    } catch (error) {
+      setSuccess(false);
+      setMessage("Une erreur est survenue. Veuillez réessayer.");
+    }
   }
 
   // Palette violet/blanc
@@ -26,10 +52,7 @@ export default function ComingSoon() {
   return (
     <div
       className="min-h-screen w-full flex flex-col"
-      style={{
-        fontFamily: "'Inter', sans-serif",
-        background: `conic-gradient(from 225deg at 60% 60%, #3c0366 0deg 120deg, #FFFFFF 120deg 360deg)`
-      }}
+      style={gradientStyle}
     >
       {/* Header */}
       <header
@@ -147,7 +170,7 @@ export default function ComingSoon() {
                 transition: "background 0.2s, color 0.2s",
               }}
             >
-              Sign Up
+              Subscribe
             </button>
           </form>
           {message && (
