@@ -14,8 +14,7 @@ export default function ComingSoon() {
     width: "100vw",
     height: "100vh",
     minHeight: "100vh",
-    overflow: "hidden",
-    background: "linear-gradient(90deg,rgba(60, 3, 102, 1) 0%, rgba(255, 255, 255, 1) 50%);",
+    overflow: "hidden"
   };
 
   async function handleSubmit(e: React.FormEvent) {
@@ -62,15 +61,15 @@ export default function ComingSoon() {
         height: "100vh",
         minHeight: "100vh",
         overflow: "hidden",
-        background: "linear-gradient(90deg, rgba(60, 3, 102, 1) 0%, rgba(255, 255, 255, 1) 90%)",
+        background: "linear-gradient(90deg, rgb(52, 1, 88) 25%, rgba(255, 255, 255, 1) 120%)",
       }}
     >
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-start justify-center pl-16 pr-8" style={{ position: "relative", zIndex: 2 }}>
-        <div className="flex flex-col items-start text-left" style={{ maxWidth: 600 }}>
+      <main className="flex-1 flex flex-col items-start justify-center px-4 sm:px-8 md:px-16 w-full" style={{ position: "relative", zIndex: 2 }}>
+        <div className="flex flex-col items-start text-left w-full max-w-[600px]">
 
           {/* Logo centré */}
-          <div className="flex flex-col items-center gap-6 mb-8">
+          <div className="flex flex-col items-start gap-6 mb-8 w-full">
 
             <span
               style={{
@@ -80,12 +79,13 @@ export default function ComingSoon() {
                 fontSize: "3rem",
                 letterSpacing: "0.05em",
               }}
+              className="w-full text-left"
             >
               Coming soon
             </span>
           </div>
           <h1
-            className="font-extrabold whitespace-nowrap text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-16"
+            className="font-extrabold break-words text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-10 w-full text-left"
             style={{
               color: blanc,
               textShadow: `0 2px 2px ${blanc}, 0 0 2px ${violet}`,
@@ -98,7 +98,7 @@ export default function ComingSoon() {
           </h1>
 
           <h2
-            className="font-normal whitespace-nowrap text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-16"
+            className="font-normal break-words text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-8 w-full text-left"
             style={{
               color: blanc,
               textShadow: `0 2px 2px ${blanc}, 0 0 2px ${violet}`,
@@ -109,31 +109,30 @@ export default function ComingSoon() {
           >
             Data Observability Platform
           </h2>
-          
-          
+
           <p
             style={{
               color: texteSecondaire,
               textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
-              fontSize: "1.2rem",
-              marginBottom: "3rem",
-              maxWidth: 500,
+              fontSize: "1.1rem",
+              marginBottom: "2rem",
               fontWeight: 400,
-              textAlign: "center",
+              textAlign: "left",
             }}
+            className="w-full text-left"
           >
             Subscribe to be the first notified when we go live.
           </p>
           <form
             onSubmit={handleSubmit}
-            className="flex items-center gap-2"
+            className="flex flex-col sm:flex-row items-center gap-2 w-full justify-start"
             style={{
               background: "rgba(255,255,255,0.15)",
               border: `1px solid ${violet}55`,
               borderRadius: 50,
               padding: "0.5rem",
               maxWidth: 450,
-              //boxShadow: focusGlow,
+              margin: "0",
             }}
           >
             <input
@@ -150,7 +149,9 @@ export default function ComingSoon() {
                 flex: 1,
                 outline: "none",
                 fontSize: "1rem",
+                minWidth: 0,
               }}
+              className="w-full sm:w-auto"
             />
             <button
               type="submit"
@@ -165,7 +166,10 @@ export default function ComingSoon() {
                 cursor: "pointer",
                 boxShadow: `0 0 0 2px ${blanc}55`,
                 transition: "background 0.2s, color 0.2s",
+                width: "100%",
+                maxWidth: "180px",
               }}
+              className="w-full sm:w-auto"
             >
               Subscribe
             </button>
