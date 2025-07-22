@@ -125,7 +125,7 @@ export default function ComingSoon() {
           </p>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row items-center gap-2 w-full justify-start"
+            className="flex flex-row items-center gap-2 w-full justify-start"
             style={{
               background: "rgba(255,255,255,0.15)",
               border: `1px solid ${violet}55`,
@@ -151,7 +151,7 @@ export default function ComingSoon() {
                 fontSize: "1rem",
                 minWidth: 0,
               }}
-              className="w-full sm:w-auto"
+              className="flex-1 min-w-0"
             />
             <button
               type="submit"
@@ -169,7 +169,7 @@ export default function ComingSoon() {
                 width: "100%",
                 maxWidth: "180px",
               }}
-              className="w-full sm:w-auto"
+              className="w-auto"
             >
               Subscribe
             </button>
