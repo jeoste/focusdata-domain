@@ -52,11 +52,11 @@ export async function POST(req: NextRequest) {
       }
 
       return NextResponse.json({ success: true });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Resend Error:", error);
       return NextResponse.json({ 
         error: "Erreur lors de l'envoi de l'email", 
-        details: error.message || "Erreur inconnue"
+        details: (error as Error).message || "Erreur inconnue"
       }, { status: 500 });
     }
   } catch (err) {
