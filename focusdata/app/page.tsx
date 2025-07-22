@@ -76,7 +76,7 @@ export default function ComingSoon() {
                 color: blanc,
                 textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
                 fontWeight: 500,
-                fontSize: "3rem",
+                fontSize: "1.5rem",
                 letterSpacing: "0.05em",
               }}
               className="w-full text-left"
