@@ -15,7 +15,7 @@ export default function ComingSoon() {
     height: "100vh",
     minHeight: "100vh",
     overflow: "hidden",
-    background: "conic-gradient(from 145deg at 65% 45%, #0b1a3e 0deg, #11264f 175deg, #34785c 180deg, #3e8959 270deg, #29684b 360deg)",
+    background: "linear-gradient(90deg,rgba(60, 3, 102, 1) 0%, rgba(255, 255, 255, 1) 50%);",
   };
 
   async function handleSubmit(e: React.FormEvent) {
@@ -51,42 +51,23 @@ export default function ComingSoon() {
   // Palette violet/blanc
   const violet = "#3c0366";
   const blanc = "#FFFFFF";
-  const texteSecondaire = "#E0E0E0";
+  const texteSecondaire = "#FFFFFF";
   const focusGlow = "0 0 40px 10px #c27aff";
 
   return (
     <div
       className="min-h-screen w-full flex flex-col"
-      style={gradientStyle}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        minHeight: "100vh",
+        overflow: "hidden",
+        background: "linear-gradient(90deg, rgba(60, 3, 102, 1) 0%, rgba(255, 255, 255, 1) 90%)",
+      }}
     >
-      {/* Overlay pour le fond dégradé et la séparation diagonale */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 0,
-          pointerEvents: "none",
-          background: `linear-gradient(120deg, #3ecf8e 0%, #1b2e5a 50%, #3c0366 100%)`,
-        }}
-      />
-      {/* Séparation nette en diagonale */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 1,
-          pointerEvents: "none",
-          background: `linear-gradient(120deg, transparent 49.5%, #181028 50%)`,
-          mixBlendMode: "normal",
-        }}
-      />
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-8" style={{ position: "relative", zIndex: 2 }}>
-        <div className="flex flex-col items-center text-center" style={{ maxWidth: 600 }}>
+      <main className="flex-1 flex flex-col items-start justify-center pl-16 pr-8" style={{ position: "relative", zIndex: 2 }}>
+        <div className="flex flex-col items-start text-left" style={{ maxWidth: 600 }}>
 
           {/* Logo centré */}
           <div className="flex flex-col items-center gap-6 mb-8">
@@ -94,7 +75,8 @@ export default function ComingSoon() {
             <span
               style={{
                 color: blanc,
-                fontWeight: 400,
+                textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
+                fontWeight: 500,
                 fontSize: "3rem",
                 letterSpacing: "0.05em",
               }}
@@ -106,19 +88,33 @@ export default function ComingSoon() {
             className="font-extrabold whitespace-nowrap text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-16"
             style={{
               color: blanc,
-              textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
+              textShadow: `0 2px 2px ${blanc}, 0 0 2px ${violet}`,
               filter: "brightness(1.1)",
-              fontWeight: 600,
+              fontWeight: 500,
               letterSpacing: "-0.04em",
             }}
           >
             F O C U S
           </h1>
+
+          <h2
+            className="font-normal whitespace-nowrap text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-16"
+            style={{
+              color: blanc,
+              textShadow: `0 2px 2px ${blanc}, 0 0 2px ${violet}`,
+              filter: "brightness(1.1)",
+              fontWeight: 400,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            Data Observability Platform
+          </h2>
           
           
           <p
             style={{
               color: texteSecondaire,
+              textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
               fontSize: "1.2rem",
               marginBottom: "3rem",
               maxWidth: 500,
@@ -137,7 +133,7 @@ export default function ComingSoon() {
               borderRadius: 50,
               padding: "0.5rem",
               maxWidth: 450,
-              boxShadow: focusGlow,
+              //boxShadow: focusGlow,
             }}
           >
             <input
