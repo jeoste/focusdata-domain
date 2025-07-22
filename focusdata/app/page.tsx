@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, CSSProperties } from "react";
 import { Toaster, toast } from "sonner";
 
 export default function ComingSoon() {
@@ -9,9 +9,13 @@ export default function ComingSoon() {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const gradientStyle = {
-    background: "radial-gradient(circle, rgba(49, 1, 83, 1) 10%, rgba(59, 8, 70, 1) 53%, rgba(132, 0, 184, 1) 80%, rgba(255, 255, 255, 1) 92%)",
-    minHeight: "100vh"
+  const gradientStyle: CSSProperties = {
+    position: "relative",
+    width: "100vw",
+    height: "100vh",
+    minHeight: "100vh",
+    overflow: "hidden",
+    background: "conic-gradient(from 145deg at 65% 45%, #0b1a3e 0deg, #11264f 175deg, #34785c 180deg, #3e8959 270deg, #29684b 360deg)",
   };
 
   async function handleSubmit(e: React.FormEvent) {
@@ -55,8 +59,33 @@ export default function ComingSoon() {
       className="min-h-screen w-full flex flex-col"
       style={gradientStyle}
     >
+      {/* Overlay pour le fond dégradé et la séparation diagonale */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          pointerEvents: "none",
+          background: `linear-gradient(120deg, #3ecf8e 0%, #1b2e5a 50%, #3c0366 100%)`,
+        }}
+      />
+      {/* Séparation nette en diagonale */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
+          background: `linear-gradient(120deg, transparent 49.5%, #181028 50%)`,
+          mixBlendMode: "normal",
+        }}
+      />
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-8">
+      <main className="flex-1 flex flex-col items-center justify-center px-8" style={{ position: "relative", zIndex: 2 }}>
         <div className="flex flex-col items-center text-center" style={{ maxWidth: 600 }}>
 
           {/* Logo centré */}
@@ -74,15 +103,13 @@ export default function ComingSoon() {
             </span>
           </div>
           <h1
+            className="font-extrabold whitespace-nowrap text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-16"
             style={{
               color: blanc,
-              fontSize: "7rem",
-              fontWeight: 600,
-              lineHeight: 1.1,
-              marginBottom: "4rem",
-              letterSpacing: "-0.04em",
               textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
               filter: "brightness(1.1)",
+              fontWeight: 600,
+              letterSpacing: "-0.04em",
             }}
           >
             F O C U S

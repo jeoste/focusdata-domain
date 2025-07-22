@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
               <h1 style="color: #3b0846; font-size: 2rem; font-weight: 400; text-align: center;">F O C U S</h1>
             </div>
             <p style="font-size: 16px; color: #333333; margin-bottom: 16px;">
-              Bonjour,<br>
+              Hello Jeoffrey,<br>
               A new person has subscribed to the waitlist of F O C U S.
             </p>
             <div style="background: #f5f5f5; padding: 18px; border-radius: 6px; border: 2px solid #3b0846; text-align: center; margin-bottom: 24px;">
