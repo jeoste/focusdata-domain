@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Toaster, toast } from "sonner";
 
 export default function ComingSoon() {
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ export default function ComingSoon() {
   const [success, setSuccess] = useState(false);
 
   const gradientStyle = {
-    background: "radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(87, 0, 107, 1) 53%, rgba(132, 0, 184, 1) 80%, rgba(90, 0, 110, 1) 98%)",
+    background: "radial-gradient(circle, rgba(49, 1, 83, 1) 10%, rgba(59, 8, 70, 1) 53%, rgba(132, 0, 184, 1) 80%, rgba(255, 255, 255, 1) 92%)",
     minHeight: "100vh"
   };
 
@@ -31,15 +32,15 @@ export default function ComingSoon() {
 
       if (response.ok) {
         setSuccess(true);
-        setMessage("Merci ! Vous êtes bien inscrit(e).");
+        toast.success("Thanks for subscribing!");
         setEmail("");
       } else {
         setSuccess(false);
-        setMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
+        toast.error(data.error || "An error occurred. Please try again.");
       }
     } catch (error) {
       setSuccess(false);
-      setMessage("Une erreur est survenue. Veuillez réessayer.");
+      toast.error("An error occurred. Please try again.");
     }
   }
 
@@ -54,78 +55,51 @@ export default function ComingSoon() {
       className="min-h-screen w-full flex flex-col"
       style={gradientStyle}
     >
-      {/* Header */}
-      <header
-        className="flex justify-between items-center w-full"
-        style={{ padding: "2rem 4rem" }}
-      >
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center">
-            <Image src="/focus_logo.png" alt="Logo Focus" width={32} height={32} />
-          </div>
-          <span
-            style={{
-              color: blanc,
-              fontWeight: 500,
-              fontSize: "1.5rem",
-              letterSpacing: "0.02em",
-            }}
-          >
-            F O C U S
-          </span>
-        </div>
-        <nav>
-          <a
-            href="#"
-            style={{
-              color: blanc,
-              fontSize: "1rem",
-              textDecoration: "none",
-              fontWeight: 400,
-            }}
-          >
-            Home
-          </a>
-        </nav>
-      </header>
-
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-start justify-center px-8" style={{ padding: "4rem 4rem 0 4rem" }}>
-        <div style={{ maxWidth: 600 }}>
-          <div
-            style={{
-              color: texteSecondaire,
-              fontSize: "1.2rem",
-              marginBottom: "1rem",
-              fontWeight: 400,
-            }}
-          >
-            It's only a matter of time...
+      <main className="flex-1 flex flex-col items-center justify-center px-8">
+        <div className="flex flex-col items-center text-center" style={{ maxWidth: 600 }}>
+
+          {/* Logo centré */}
+          <div className="flex flex-col items-center gap-6 mb-8">
+
+            <span
+              style={{
+                color: blanc,
+                fontWeight: 400,
+                fontSize: "3rem",
+                letterSpacing: "0.05em",
+              }}
+            >
+              Coming soon
+            </span>
           </div>
           <h1
             style={{
               color: blanc,
-              fontSize: "6rem",
-              fontWeight: 700,
+              fontSize: "7rem",
+              fontWeight: 600,
               lineHeight: 1.1,
-              marginBottom: "2rem",
+              marginBottom: "4rem",
               letterSpacing: "-0.04em",
-              textShadow: `0 2px 32px ${blanc}, 0 0 8px ${violet}`,
+              textShadow: `0 2px 26px ${blanc}, 0 0 26px ${violet}`,
               filter: "brightness(1.1)",
             }}
           >
-            Coming<br />Soon
+            F O C U S
           </h1>
+          
+          
           <p
             style={{
               color: texteSecondaire,
-              fontSize: "1rem",
+              fontSize: "1.2rem",
               marginBottom: "3rem",
-              maxWidth: 450,
+              maxWidth: 500,
               fontWeight: 400,
+              textAlign: "center",
             }}
           >
-            Join our newsletter to be the first to know when FOCUS launches and receive updates on the latest in data.
+            Subscribe to be the first notified when we go live.
           </p>
           <form
             onSubmit={handleSubmit}
@@ -142,7 +116,7 @@ export default function ComingSoon() {
             <input
               type="email"
               required
-              placeholder="Email *"
+              placeholder="Email address"
               value={email}
               onChange={e => setEmail(e.target.value)}
               style={{
@@ -173,20 +147,9 @@ export default function ComingSoon() {
               Subscribe
             </button>
           </form>
-          {message && (
-            <div
-              style={{
-                color: success ? "#22c55e" : "#ef4444",
-                marginTop: "1rem",
-                fontSize: "0.95rem",
-                textAlign: "left",
-              }}
-            >
-              {message}
-            </div>
-          )}
         </div>
       </main>
+      <Toaster richColors position="top-center" />
     </div>
   );
 }

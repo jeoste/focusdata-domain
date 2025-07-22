@@ -25,14 +25,23 @@ export async function POST(req: NextRequest) {
 
     try {
       const data = await resend.emails.send({
-        from: "Focus <onboarding@resend.dev>",
+        from: "Focus Data Platform <onboarding@resend.dev>",
         to: [OWNER_EMAIL],
-        subject: "Nouvelle inscription à la waitlist Focus",
+        subject: "F O C U S - Nouvelle inscription à la waitlist",
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2>Nouvelle inscription à la waitlist</h2>
-            <p>Une nouvelle personne s'est inscrite à la waitlist :</p>
-            <p style="background: #f5f5f5; padding: 15px; border-radius: 5px;"><strong>${email}</strong></p>
+          <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(59,8,70,0.08); padding: 32px;">
+              <h1 style="color: #3b0846; font-size: 2rem; font-weight: 400; text-align: center;">F O C U S</h1>
+            </div>
+            <p style="font-size: 16px; color: #333333; margin-bottom: 16px;">
+              Bonjour,<br>
+              Une nouvelle personne vient de s'inscrire à la waitlist de F O C U S.
+            </p>
+            <div style="background: #f5f5f5; padding: 18px; border-radius: 6px; border: 2px solid #3b0846; text-align: center; margin-bottom: 24px;">
+              <span style="font-weight: bold; color: #3b0846; font-size: 18px;">${email}</span>
+            </div>
+            <p style="font-size: 14px; color: #888; text-align: center;">
+              Sauvegarde du mail code : FOCUSDATADEV888.<br>
+            </p>
           </div>
         `
       });
