@@ -14,7 +14,10 @@ Main page with coming soon message and the ability to subscribe using mail to re
 - **shadcn/ui** (UI)
 - **Resend** (emailing)
 - **Vercel** (hosted with a custom domain : [focusdata.dev](https://focusdata.dev))
+<<<<<<< HEAD
 - **Nextjs** as a framework
+=======
+>>>>>>> 17d918c84bd24c0306feb989240cd1c379365dbe
 
 ## Using the project
 
