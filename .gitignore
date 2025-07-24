@@ -1,5 +1,5 @@
 node_modules
-.cursor
+.cursor/
 rule-coding-best-practices.md
 .cursorrules
 rule-design-best-practices.md
