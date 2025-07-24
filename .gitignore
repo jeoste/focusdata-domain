@@ -1,2 +1,8 @@
 node_modules
+.cursor/
+rule-coding-best-practices.md
 .cursorrules
+rule-design-best-practices.md
+/rules
+.cursor/rules
+.cursorignore
