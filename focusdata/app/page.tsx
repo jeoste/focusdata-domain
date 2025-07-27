@@ -158,15 +158,7 @@ export default function ComingSoon() {
                 <ellipse cx="27.2" cy="21.5" rx="1.7" ry="1.2" fill="#fff" fillOpacity="0.85"/>
               </svg>
             </span>
-            <span style={{ fontWeight: 700, color: blanc }}>A modern business oriented</span>
-            <span style={{ fontWeight: 700, color: blanc }}>Data</span>
-            <span style={{
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              fontWeight: 800,
-              textShadow: "0 0 1px #3c0366"
-            }}>Observability</span>
-            <span style={{ fontWeight: 700, color: blanc }}>Platform</span>
+            <span style={{ fontWeight: 800, color: blanc, fontStyle: "italic" }}>A modern business oriented Data Observability Platform</span>
           </h2>
 
           {/* Citation */}
@@ -272,19 +264,19 @@ export default function ComingSoon() {
               fontSize: "1.05rem",
               letterSpacing: "0.01em",
               textDecoration: "none",
-              boxShadow: `0 2px 12px 0 ${violet}22, 0 0 40px 1px #c27aff` ,
+              boxShadow: `0 2px 12px 0 ${violet}22, 0 0 40px 1px #c27aff, 0 0 60px 2px #c27aff33` ,
               border: `1.5px solid ${violet}33`,
               transition: "background 0.2s, color 0.2s, box-shadow 0.2s",
             }}
             onMouseOver={e => {
               e.currentTarget.style.background = violet;
               e.currentTarget.style.color = blanc;
-              e.currentTarget.style.boxShadow = `0 4px 24px 0 ${violet}55`;
+              e.currentTarget.style.boxShadow = `0 4px 24px 0 ${violet}55, 0 0 60px 4px #c27aff66`;
             }}
             onMouseOut={e => {
               e.currentTarget.style.background = "rgba(60,3,102,0.10)";
               e.currentTarget.style.color = blanc;
-              e.currentTarget.style.boxShadow = `0 2px 12px 0 ${violet}22`;
+              e.currentTarget.style.boxShadow = `0 2px 12px 0 ${violet}22, 0 0 40px 1px #c27aff, 0 0 60px 2px #c27aff33`;
             }}
           >
             Know more about Data Observability
