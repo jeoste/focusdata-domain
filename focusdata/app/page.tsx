@@ -111,7 +111,7 @@ export default function ComingSoon() {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
-            gap: "0.7rem",
+            gap: "0.5rem",
             fontSize: "1.15rem",
             fontWeight: 500,
             color: blanc,
@@ -120,10 +120,8 @@ export default function ComingSoon() {
             lineHeight: 1.2,
             letterSpacing: "-0.01em",
             textShadow: `0 1px 28px ${blanc}, 0 0 50px ${violet}`,
-            flexWrap: "nowrap",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
+            flexWrap: "wrap",
+            textAlign: "center",
             maxWidth: "100%",
           }}>
             <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "rgba(255,255,255,0.10)", borderRadius: "50%", flex: "0 0 auto" }}>
